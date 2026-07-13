@@ -1,0 +1,9 @@
+git clone https://github.com/shanta4100/earthquake.ssgpt6.com.git
+cd earthquake.ssgpt6.com
+
+# Copy the three files from /home/workdir/artifacts/earthquake.ssgpt6.com/ into this folder
+# (index.html, README.md, CNAME)
+
+git add .
+git commit -m "Initial commit: Sovereign Earthquake Intelligence Platform • SSGPT6"
+git push -u origin main
