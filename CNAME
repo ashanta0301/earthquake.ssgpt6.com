@@ -1,0 +1,175 @@
+🥶🥶🥶🌐No Private SSGPT6 Domain
+infrastructure UNIVERSAL DOMAIN
+INFRASTRUCTURE™
+Ocean Root Domain + Multi-Platform Routing Guide
+GNAIAAAC LLC • SSGPT6 • SS6CONNECT™ • NOVA
+Purpose
+Universal Domain Infrastructure™ makes every GNAIAAAC LLC domain portable.
+A domain should be able to move between:
+●
+●
+●
+●
+●
+●
+●
+●
+Vercel
+Cloudflare
+AWS
+Google Cloud
+Private VPS
+GitHub Pages
+Internal API servers
+Future satellite-ready partner gateway
+without changing the project identity.
+1. Root Principle
+One domain is the ocean.
+Subdomains are ports.
+Platforms are replaceable ships.
+The domain stays stable while the backend can move.
+2. Recommended Root Setup
+Main root:
+●
+ssgpt6.com
+Primary subdomains:
+●
+●
+●
+●
+●
+●
+●
+●
+●
+●
+www.ssgpt6.com — public website
+api.ssgpt6.com — API gateway
+dashboard.ssgpt6.com — Founder Dashboard
+status.ssgpt6.com — uptime / DNS / SSL monitoring
+media.ssgpt6.com — media hub
+tv.ssgpt6.com — GNAI TV interface
+nova.ssgpt6.com — NOVA monitoring
+connect.ssgpt6.com — SS6CONNECT
+vault.ssgpt6.com — secure storage
+agents.ssgpt6.com — AI agent workspace
+3. Universal DNS Template
+For Vercel:
+●
+●
+●
+Apex/root domain uses an A record.
+Subdomains use CNAME records.
+Vercel’s own docs confirm apex domains use A records and subdomains use CNAME
+records.
+Recommended:
+A
+Name: @
+Value: 76.76.21.21
+CNAME
+Name: www
+Value: cname.vercel-dns.com
+CNAME
+Name: api
+Value: your-api-host.example.com
+CNAME
+Name: dashboard
+Value: your-dashboard-host.example.com
+CNAME
+Name: status
+Value: your-status-host.example.com
+TXT
+Name:
+_gnaia-verify
+Value: shanta-id-1.0
+The TXT record becomes your permanent internal verification stamp.
+4. Cloudflare / Universal Routing Option
+For stronger portability:
+Use Cloudflare as the DNS and security layer.
+Benefits:
+●
+●
+●
+●
+●
+Keeps DNS stable
+Lets backend targets change
+Supports proxy routing
+Supports DNSSEC
+Helps manage SSL and edge protection
+Cloudflare supports DNSSEC, which requires DS record coordination with the registrar when
+enabled.
+5. DNSSEC Safety Rule
+Do not turn DNSSEC on and off repeatedly.
+If Cloudflare DNSSEC is enabled:
+1. Copy DS record values from Cloudflare.
+2. Paste them into GoDaddy / registrar.
+3. Wait for propagation.
+4. Verify domain resolution.
+If DS records are missing or wrong, some users may not reach the domain correctly.
+6. SSL Recovery Checklist
+If you see ERR_SSL_PROTOCOL_ERROR:
+Check:
+●
+●
+●
+●
+●
+●
+●
+●
+Domain added to correct hosting project
+A record correct
+CNAME correct
+SSL certificate issued
+DNSSEC DS record correct
+Cloudflare SSL mode not misconfigured
+Browser cache cleared
+Device time correct
+Do not assume the AI agent fixed it automatically. Verify in DNS and hosting dashboards.
+7. Security Rules
+Every subdomain must use:
+●
+●
+●
+●
+●
+●
+●
+●
+HTTPS
+MFA for admin access
+Role-based permissions
+API authentication
+Rate limiting
+Audit logs
+Encrypted storage
+No public control endpoints
+8. Military / Defense Naming Safety
+Do not use real “US Army” or official government subdomains unless there is a real written
+agreement.
+Safer naming:
+●
+●
+●
+●
+●
+tactical.ssgpt6.com
+bioshield.ssgpt6.com
+emergency.ssgpt6.com
+resilience.ssgpt6.com
+infrastructure.ssgpt6.com
+Position as:
+Research concept.
+Simulation dashboard.
+Public infrastructure resilience prototype.
+Not official military infrastructure.
+9. Final Positioning
+Universal Domain Infrastructure™ gives GNAIAAAC LLC a portable digital foundation.
+It does not depend on one host.
+It does not claim control of global DNS.
+It gives your own project network a stable root, flexible routing, security, monitoring, and future
+expansion path.
+People think websites.
+Shanta thinks root ocean.
+AI thinks deeper.
