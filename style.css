@@ -125,9 +125,7 @@ body {
     margin-top: 2rem;
 }
 
-.btn,
-.action-button,
-button {
+:is(.btn, .action-button, button) {
     display: inline-flex;
     align-items: center;
     justify-content: center;

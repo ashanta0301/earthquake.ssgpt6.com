@@ -164,8 +164,13 @@ function requestLocation() {
             setText(locationStatus, message);
             speak(message);
         },
-        () => {
-            const fallback = 'Location access was unavailable. For the Chicago pilot, voice prompts remain available without GPS.';
+        (error) => {
+            const geolocationErrors = {
+                1: 'Location permission was denied. Enable GPS access to receive Chicago landmark guidance.',
+                2: 'Location data is unavailable right now. You can still use the voice and haptic demo controls.',
+                3: 'Location request timed out. Try again in an open area or with a stronger signal.'
+            };
+            const fallback = geolocationErrors[error.code] || 'Location access was unavailable. For the Chicago pilot, voice prompts remain available without GPS.';
             setText(locationStatus, fallback);
         },
         {
@@ -196,8 +201,14 @@ function startVoiceRecognition() {
         processVoiceCommand(transcript);
     };
 
-    recognition.onerror = () => {
-        setText(voiceStatus, 'Voice recognition could not complete. Please try again.');
+    recognition.onerror = (event) => {
+        const voiceErrors = {
+            'no-speech': 'No speech was detected. Please try the command again.',
+            'not-allowed': 'Microphone access was blocked. Enable it to use the voice listener.',
+            network: 'The voice listener encountered a network issue. Please retry in a moment.'
+        };
+        const message = voiceErrors[event.error] || 'Voice recognition could not complete. Please try again.';
+        setText(voiceStatus, message);
     };
 
     recognition.start();
