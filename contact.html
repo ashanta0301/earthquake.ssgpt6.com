@@ -3,93 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Contact | SSGPT6 Platform</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .contact-container {
-            max-width: 600px;
-            margin: 2rem auto;
-        }
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #667eea;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-        }
-        button {
-            background: #667eea;
-            color: white;
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        button:hover {
-            background: #764ba2;
-        }
-    </style>
 </head>
 <body>
-    <nav class="navbar">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <nav class="navbar" aria-label="Primary">
         <div class="nav-container">
-            <div class="logo">🌍 Earthquake Hub</div>
+            <div class="logo">⚡ SSGPT6 Platform</div>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="about.html">Architecture</a></li>
                 <li><a href="resources.html">Resources</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <h1>Contact Us</h1>
-            <p>Get in touch with us for more information</p>
+            <p class="eyebrow">Program intake</p>
+            <h1>Request platform rollout support</h1>
+            <p>Use this form to coordinate pilot onboarding, accessibility feedback, Trading Hub workshops, or infrastructure planning.</p>
         </div>
     </header>
 
-    <main>
-        <section class="contact-container">
-            <div class="info-section">
-                <h2>Get in Touch</h2>
-                <form>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit">Send Message</button>
-                </form>
+    <main id="main-content">
+        <section class="contact-container info-section">
+            <div class="section-heading">
+                <h2>Contact the SSGPT6 team</h2>
+                <span class="status-pill">Static form demo</span>
             </div>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" aria-label="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" aria-label="Your email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="organization">Organization</label>
+                    <input type="text" id="organization" name="organization" aria-label="Your organization">
+                </div>
+                <div class="form-group">
+                    <label for="focus-area">Primary focus area</label>
+                    <select id="focus-area" name="focus-area" aria-label="Primary focus area">
+                        <option>Trading Hub</option>
+                        <option>Secure Gateway</option>
+                        <option>Voice Hub</option>
+                        <option>Chicago Navigation Pilot</option>
+                        <option>Full Platform Architecture</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Project needs</label>
+                    <textarea id="message" name="message" aria-label="Describe your project needs" required></textarea>
+                </div>
+                <button type="submit" class="action-button">Send request</button>
+            </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Earthquake Information Hub. All rights reserved.</p>
-        <p>Educational Resource for Srinivasa Subbaraya Government Polytechnic College</p>
+        <p>&copy; 2026 SSGPT6 Universal Quantum AI Automation Platform.</p>
+        <p>Contact page for rollout planning, accessibility pilots, and training requests.</p>
     </footer>
 </body>
 </html>

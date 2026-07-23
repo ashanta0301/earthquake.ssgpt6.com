@@ -1,32 +1,45 @@
-# Earthquake Information Hub
+# SSGPT6 Universal Quantum AI Automation Platform MVP
 
-A comprehensive educational website about earthquakes, seismic activity, and earthquake preparedness.
+This repository now presents a static MVP for transforming `earthquake.ssgpt6.com` into a broader SSGPT6 platform experience.
 
-## Features
+## What the MVP includes
 
-✅ Responsive design for all devices
-✅ Educational content
-✅ Safety guidelines
-✅ GitHub Pages hosted
-✅ Automated deployment
+- Unified homepage dashboard for the Trading Hub Module, Secure Gateway, and SSGPT6 Quantum AI Workstation™
+- Operating-system overview for Financial OS™, Creator OS™, Learning OS™, and Research OS™
+- Browser-based accessibility demo using:
+  - Web Speech API (voice recognition + speech synthesis)
+  - Geolocation API for GPS context
+  - `navigator.vibrate()` for haptic alerts on supported devices
+- Chicago navigation pilot messaging with landmark-based route announcements
+- Improved accessibility with skip links, focus-visible states, ARIA live regions, and labeled form controls
 
-## Pages
+## Project pages
 
-- **Home** - Introduction to earthquakes
-- **About** - Earthquake science and types
-- **Resources** - Safety tips and guides
-- **Contact** - Contact form
+- **Home** – platform dashboard and live browser demo
+- **Architecture** – Secure Gateway, workstation, and production stack overview
+- **Resources** – implementation priorities, suggested backend objects, and pilot integrations
+- **Contact** – rollout intake form for platform onboarding requests
 
-## Live Website
+## Local preview
 
-https://ashanta0301.github.io/earthquake.ssgpt6.com/
+Open `index.html` directly in a browser, or serve the repository with a simple static server:
 
-## How to Enable GitHub Pages
+```bash
+python3 -m http.server 8000
+```
 
-1. Go to Settings → Pages
-2. Select main branch
-3. Save
+Then visit `http://localhost:8000`.
 
-## License
+## Production direction
 
-Open source for educational purposes.
+The requested long-term architecture is represented in the content and UI, with these future implementation layers called out explicitly:
+
+- Next.js + TypeScript frontend
+- Express or Next.js API backend
+- PostgreSQL persistence for users, sessions, modules, transactions, and navigation logs
+- Redis for caching and real-time signals
+- GitHub Actions and containerized deployment workflows
+
+## Live website
+
+https://earthquake.ssgpt6.com/

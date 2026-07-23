@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earthquake Resources</title>
+    <title>Platform Resources | SSGPT6</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <nav class="navbar" aria-label="Primary">
         <div class="nav-container">
-            <div class="logo">🌍 Earthquake Hub</div>
+            <div class="logo">⚡ SSGPT6 Platform</div>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="resources.html" class="active">Resources</a></li>
+                <li><a href="about.html">Architecture</a></li>
+                <li><a href="resources.html" class="active" aria-current="page">Resources</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
@@ -21,45 +22,68 @@
 
     <header class="hero">
         <div class="hero-content">
-            <h1>Educational Resources</h1>
-            <p>Learn more about earthquakes and earthquake safety</p>
+            <p class="eyebrow">Implementation resources</p>
+            <h1>MVP modules, APIs, and rollout priorities</h1>
+            <p>This page keeps the requested deliverables visible while the static platform demo proves the dashboard, accessibility, and navigation experience in the browser.</p>
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="info-section">
-            <h2>Earthquake Safety Tips</h2>
-            <div style="margin-top: 1.5rem;">
-                <h3 style="color: #667eea; margin-top: 1rem;">Before an Earthquake</h3>
-                <ul style="margin-left: 2rem; margin-top: 0.5rem;">
-                    <li>Secure heavy furniture to walls</li>
-                    <li>Keep emergency supplies ready</li>
-                    <li>Know safe spots in your home</li>
-                    <li>Practice "Drop, Cover, and Hold On"</li>
-                </ul>
-                
-                <h3 style="color: #667eea; margin-top: 1rem;">During an Earthquake</h3>
-                <ul style="margin-left: 2rem; margin-top: 0.5rem;">
-                    <li>DROP to hands and knees</li>
-                    <li>COVER your head and neck</li>
-                    <li>HOLD ON under a sturdy desk/table</li>
-                    <li>Stay away from windows</li>
-                </ul>
-                
-                <h3 style="color: #667eea; margin-top: 1rem;">After an Earthquake</h3>
-                <ul style="margin-left: 2rem; margin-top: 0.5rem;">
-                    <li>Check for injuries and provide first aid</li>
-                    <li>Inspect your home for damage</li>
-                    <li>Listen to emergency broadcasts</li>
-                    <li>Be prepared for aftershocks</li>
-                </ul>
+            <h2>Demonstrated browser capabilities</h2>
+            <ul class="details-list">
+                <li>Web Speech API for command listening and spoken status updates.</li>
+                <li>Geolocation API for GPS context and nearby landmark messaging.</li>
+                <li><code>navigator.vibrate()</code> patterns for haptic route alerts on supported devices.</li>
+                <li>ARIA live regions, skip links, and focus states for assistive technology support.</li>
+            </ul>
+        </section>
+
+        <section class="info-section">
+            <h2>Chicago navigation pilot data sources</h2>
+            <div class="pilot-grid">
+                <article class="pilot-step">
+                    <h3>CTA transit status</h3>
+                    <p>Use transit arrivals and stop accessibility metadata to announce nearby rail or bus options.</p>
+                </article>
+                <article class="pilot-step">
+                    <h3>Map providers</h3>
+                    <p>Connect Google Maps or Mapbox for cross-street, sidewalk, and reroute context when the production stack is enabled.</p>
+                </article>
+                <article class="pilot-step">
+                    <h3>Accessibility signals</h3>
+                    <p>Log crosswalk observations, construction alerts, and hazard notes through Research OS™ workflows.</p>
+                </article>
             </div>
+        </section>
+
+        <section class="info-section">
+            <h2>Implementation priorities</h2>
+            <ol class="details-list ordered-list">
+                <li>Secure Gateway &amp; tenant-aware authentication</li>
+                <li>Dashboard and OS workspace switching</li>
+                <li>Voice Hub command orchestration</li>
+                <li>Chicago navigation pilot</li>
+                <li>Financial OS™ educational module</li>
+                <li>Creator OS™, Learning OS™, and Research OS™ expansions</li>
+            </ol>
+        </section>
+
+        <section class="info-section">
+            <h2>Suggested backend objects</h2>
+            <ul class="details-list">
+                <li><strong>Users:</strong> identity, MFA, OAuth provider, role, tenant</li>
+                <li><strong>Sessions:</strong> tokens, device, audit timestamps, event history</li>
+                <li><strong>Modules:</strong> OS selection, status, preference profile, feature flags</li>
+                <li><strong>Transactions:</strong> paper-trading entries, lesson checkpoints, compliance notes</li>
+                <li><strong>Navigation logs:</strong> route requests, landmarks, haptic events, accessibility reports</li>
+            </ul>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Earthquake Information Hub. All rights reserved.</p>
-        <p>Educational Resource for Srinivasa Subbaraya Government Polytechnic College</p>
+        <p>&copy; 2026 SSGPT6 Universal Quantum AI Automation Platform.</p>
+        <p>Resources for the dashboard MVP, accessibility controls, and production rollout.</p>
     </footer>
 </body>
 </html>
