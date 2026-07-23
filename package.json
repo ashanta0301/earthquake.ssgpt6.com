@@ -1,0 +1,22 @@
+{
+  "name": "ssgpt6-universal-platform",
+  "version": "1.0.0",
+  "description": "SSGPT6 Quantum AI Automation Workstation - Universal Platform",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "deploy": "turbo run deploy"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "turbo": "^1.10.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0"
+  }
+}
