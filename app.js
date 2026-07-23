@@ -12,6 +12,11 @@ const buttonIds = {
 };
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const SPEECH_RATE = 1;
+const SPEECH_PITCH = 1;
+const EARTH_RADIUS_KM = 6371;
+const GEOLOCATION_TIMEOUT_MS = 10000;
+const GEOLOCATION_MAX_AGE_MS = 60000;
 const supportsSpeech = typeof window.speechSynthesis !== 'undefined';
 const supportsRecognition = typeof SpeechRecognition !== 'undefined';
 const supportsGeolocation = typeof navigator.geolocation !== 'undefined';
@@ -51,8 +56,8 @@ function speak(message) {
     }
 
     const utterance = new SpeechSynthesisUtterance(message);
-    utterance.rate = 1;
-    utterance.pitch = 1;
+    utterance.rate = SPEECH_RATE;
+    utterance.pitch = SPEECH_PITCH;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utterance);
     setText(voiceStatus, `Speaking: ${message}`);
@@ -75,11 +80,10 @@ function toRadians(value) {
 function findNearestLandmark(lat, lng) {
     return chicagoLandmarks
         .map((landmark) => {
-            const earthRadiusKm = 6371;
             const dLat = toRadians(landmark.lat - lat);
             const dLng = toRadians(landmark.lng - lng);
             const haversineTerm = Math.sin(dLat / 2) ** 2 + Math.cos(toRadians(lat)) * Math.cos(toRadians(landmark.lat)) * Math.sin(dLng / 2) ** 2;
-            const distanceKm = 2 * earthRadiusKm * Math.atan2(Math.sqrt(haversineTerm), Math.sqrt(1 - haversineTerm));
+            const distanceKm = 2 * EARTH_RADIUS_KM * Math.atan2(Math.sqrt(haversineTerm), Math.sqrt(1 - haversineTerm));
             return { ...landmark, distanceKm };
         })
         .sort((landmarkA, landmarkB) => landmarkA.distanceKm - landmarkB.distanceKm)[0];
@@ -166,8 +170,8 @@ function requestLocation() {
         },
         {
             enableHighAccuracy: true,
-            timeout: 10000,
-            maximumAge: 60000
+            timeout: GEOLOCATION_TIMEOUT_MS,
+            maximumAge: GEOLOCATION_MAX_AGE_MS
         }
     );
 }
