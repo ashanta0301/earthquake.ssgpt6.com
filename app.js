@@ -11,14 +11,14 @@ const buttonIds = {
     vibrateAlert: document.getElementById('vibrate-alert')
 };
 
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const SpeechRecognitionConstructor = window.SpeechRecognition || window.webkitSpeechRecognition;
 const SPEECH_RATE = 1;
 const SPEECH_PITCH = 1;
 const EARTH_RADIUS_KM = 6371;
 const GEOLOCATION_TIMEOUT_MS = 10000;
 const GEOLOCATION_MAX_AGE_MS = 60000;
 const supportsSpeech = typeof window.speechSynthesis !== 'undefined';
-const supportsRecognition = typeof SpeechRecognition !== 'undefined';
+const supportsRecognition = typeof SpeechRecognitionConstructor !== 'undefined';
 const supportsGeolocation = typeof navigator.geolocation !== 'undefined';
 const supportsVibration = typeof navigator.vibrate === 'function';
 
@@ -77,15 +77,19 @@ function toRadians(value) {
     return (value * Math.PI) / 180;
 }
 
+function calculateHaversineDistance(originLat, originLng, destinationLat, destinationLng) {
+    const dLat = toRadians(destinationLat - originLat);
+    const dLng = toRadians(destinationLng - originLng);
+    const haversineTerm = Math.sin(dLat / 2) ** 2 + Math.cos(toRadians(originLat)) * Math.cos(toRadians(destinationLat)) * Math.sin(dLng / 2) ** 2;
+    return 2 * EARTH_RADIUS_KM * Math.atan2(Math.sqrt(haversineTerm), Math.sqrt(1 - haversineTerm));
+}
+
 function findNearestLandmark(lat, lng) {
     return chicagoLandmarks
-        .map((landmark) => {
-            const dLat = toRadians(landmark.lat - lat);
-            const dLng = toRadians(landmark.lng - lng);
-            const haversineTerm = Math.sin(dLat / 2) ** 2 + Math.cos(toRadians(lat)) * Math.cos(toRadians(landmark.lat)) * Math.sin(dLng / 2) ** 2;
-            const distanceKm = 2 * EARTH_RADIUS_KM * Math.atan2(Math.sqrt(haversineTerm), Math.sqrt(1 - haversineTerm));
-            return { ...landmark, distanceKm };
-        })
+        .map((landmark) => ({
+            ...landmark,
+            distanceKm: calculateHaversineDistance(lat, lng, landmark.lat, landmark.lng)
+        }))
         .sort((landmarkA, landmarkB) => landmarkA.distanceKm - landmarkB.distanceKm)[0];
 }
 
@@ -187,7 +191,7 @@ function startVoiceRecognition() {
         return;
     }
 
-    const recognition = new SpeechRecognition();
+    const recognition = new SpeechRecognitionConstructor();
     recognition.lang = 'en-US';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
