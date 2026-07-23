@@ -77,7 +77,7 @@ function toRadians(value) {
     return (value * Math.PI) / 180;
 }
 
-function calculateHaversineDistance(originLat, originLng, destinationLat, destinationLng) {
+function haversineDistance(originLat, originLng, destinationLat, destinationLng) {
     const dLat = toRadians(destinationLat - originLat);
     const dLng = toRadians(destinationLng - originLng);
     const haversineTerm = Math.sin(dLat / 2) ** 2 + Math.cos(toRadians(originLat)) * Math.cos(toRadians(destinationLat)) * Math.sin(dLng / 2) ** 2;
@@ -88,7 +88,7 @@ function findNearestLandmark(lat, lng) {
     return chicagoLandmarks
         .map((landmark) => ({
             ...landmark,
-            distanceKm: calculateHaversineDistance(lat, lng, landmark.lat, landmark.lng)
+            distanceKm: haversineDistance(lat, lng, landmark.lat, landmark.lng)
         }))
         .sort((landmarkA, landmarkB) => landmarkA.distanceKm - landmarkB.distanceKm)[0];
 }
@@ -110,40 +110,27 @@ function processVoiceCommand(transcript) {
     const normalized = transcript.toLowerCase();
     setText(voiceStatus, `Heard: ${transcript}`);
 
-    if (normalized.includes('where am i')) {
-        requestLocation();
-        return;
-    }
+    const commandMappings = [
+        { matches: ['where am i'], action: requestLocation },
+        { matches: ['nearest crosswalk', 'start navigation'], action: announceRoute },
+        { matches: ['financial os'], action: () => openModule('Financial OS') },
+        { matches: ['creator os'], action: () => openModule('Creator OS') },
+        { matches: ['learning os'], action: () => openModule('Learning OS') },
+        { matches: ['research os'], action: () => openModule('Research OS') },
+        {
+            matches: ['stop navigation'],
+            action: () => {
+                const message = 'Navigation guidance paused. Use announce Chicago route to resume.';
+                setText(routeStatus, message);
+                speak(message);
+            }
+        }
+    ];
 
-    if (normalized.includes('nearest crosswalk') || normalized.includes('start navigation')) {
-        announceRoute();
-        return;
-    }
+    const matchedCommand = commandMappings.find(({ matches }) => matches.some((phrase) => normalized.includes(phrase)));
 
-    if (normalized.includes('financial os')) {
-        openModule('Financial OS');
-        return;
-    }
-
-    if (normalized.includes('creator os')) {
-        openModule('Creator OS');
-        return;
-    }
-
-    if (normalized.includes('learning os')) {
-        openModule('Learning OS');
-        return;
-    }
-
-    if (normalized.includes('research os')) {
-        openModule('Research OS');
-        return;
-    }
-
-    if (normalized.includes('stop navigation')) {
-        const message = 'Navigation guidance paused. Use announce Chicago route to resume.';
-        setText(routeStatus, message);
-        speak(message);
+    if (matchedCommand) {
+        matchedCommand.action();
         return;
     }
 
