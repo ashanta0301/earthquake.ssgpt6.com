@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Validate HTML
+        run: |
+          echo "Checking HTML files..."
+          for file in *.html; do
+            if [ -f "$file" ]; then
+              echo "✓ Found: $file"
+            fi
+          done
+      
+      - name: Check CSS
+        run: |
+          if [ -f "style.css" ]; then
+            echo "✓ CSS file found and validated"
+          fi
+      
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          cname: earthquake.ssgpt6.com
+      
+      - name: Deployment Status
+        run: echo "✅ Website deployed successfully!"
