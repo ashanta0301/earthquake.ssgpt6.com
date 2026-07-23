@@ -78,11 +78,11 @@ function findNearestLandmark(lat, lng) {
             const earthRadiusKm = 6371;
             const dLat = toRadians(landmark.lat - lat);
             const dLng = toRadians(landmark.lng - lng);
-            const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRadians(lat)) * Math.cos(toRadians(landmark.lat)) * Math.sin(dLng / 2) ** 2;
-            const distanceKm = 2 * earthRadiusKm * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const haversineTerm = Math.sin(dLat / 2) ** 2 + Math.cos(toRadians(lat)) * Math.cos(toRadians(landmark.lat)) * Math.sin(dLng / 2) ** 2;
+            const distanceKm = 2 * earthRadiusKm * Math.atan2(Math.sqrt(haversineTerm), Math.sqrt(1 - haversineTerm));
             return { ...landmark, distanceKm };
         })
-        .sort((left, right) => left.distanceKm - right.distanceKm)[0];
+        .sort((landmarkA, landmarkB) => landmarkA.distanceKm - landmarkB.distanceKm)[0];
 }
 
 function announceRoute() {
@@ -225,5 +225,13 @@ function bindControls() {
     }
 }
 
-updateCapabilities();
-bindControls();
+function initializeDashboard() {
+    updateCapabilities();
+    bindControls();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeDashboard);
+} else {
+    initializeDashboard();
+}
