@@ -15,8 +15,8 @@
     "packages/*"
   ],
   "devDependencies": {
-    "turbo": "^1.10.0",
-    "typescript": "^5.0.0",
-    "eslint": "^8.0.0"
+    "eslint": "^8.0.0",
+    "turbo": "^2.10.6",
+    "typescript": "^5.0.0"
   }
 }
